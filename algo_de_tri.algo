@@ -1,0 +1,45 @@
+/*Le tri par insertion est un algorithme de tri simple qui fonctionne de la même manière que les cartes à jouer. 
+Chaque fois que nous prenons une nouvelle carte, nous la plaçons au bon endroit dans notre main.
+Chaque fois, nous ne travaillons qu'avec le premier élément i-1 du tableau
+Choisissez l'élément arr[i] et insérez-le dans la séquence triée du tableau de 0 à i-1*/
+
+FUNCTION Tri_tableau(tab: ARRAY_OF INTEGER[n];) :  ARRAY_OF INTEGER[n];
+VAR
+    elt_trie := INTEGER;
+    j,i:= INTEGER;
+BEGIN
+    FOR i FROM 0 TO tab.length-1 STEP 1  DO
+        elt_trie = tab[i];//elt_trie va nous servir pour comparer la valeur actuel de la cellule de tablau a deplacer
+        j= i-1;//J va representer tous ce quil ya a gauche de i
+
+        WHILE (j >=0 AND tab[j] > elt_trie) DO
+            //j doit etre superieur a zero car l'index du tableau commence a zero
+            //si elt_trie est infinrieur a ce qui est a gauche
+            //on change la place des valeurs
+            tab[j+1] = tab[j];
+            j=j-1;
+            
+            tab[j+1]=elt_trie;
+        END_WHILE
+
+    END_FOR
+
+
+
+    RETURN tab;
+END
+
+ALGORITHM Algo de trie
+VAR
+    tab: ARRAY_OF INTEGER[n];
+    i,n:INTEGER;
+BEGIN
+    Write("Donner la taille du tableau:");
+    Read(n);
+    Write("Remplir le tableau");
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        Write("donner l'element tab[",i, "]");
+        Read(tab[i]);
+    END_FOR
+    Tri_tableau(tab);
+END
